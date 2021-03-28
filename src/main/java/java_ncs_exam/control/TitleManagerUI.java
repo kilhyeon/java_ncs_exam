@@ -64,13 +64,23 @@ public class TitleManagerUI extends AbstractManagerUI<Title> {
 
 	@Override
 	protected void actionPerformedBtnUpdate(ActionEvent e) {
-		Title updateTitle = pContent.getItem();
-		service.modifyTitle(updateTitle);
-		pList.loadData();
-		pContent.clearTf();
-		btnAdd.setText("Ãß°¡");
-		JOptionPane.showMessageDialog(null, updateTitle.gettName() + "(" + updateTitle.gettNo() + ")ÀÌ(°¡) "
-				+ updateTitle.gettName() + "(" + updateTitle.gettNo() + ")" + "·Î º¯°æµÇ¾ú½À´Ï´Ù.");
+		Title beforeTitle = pList.getItem();
+		try {
+			Title updateTitle = pContent.getItem();
+			String regExp = "^[°¡-ÆR]*$";
+			if (0 < updateTitle.gettNo() && updateTitle.gettNo() < 1000 && updateTitle.gettName().matches(regExp)) {
+				service.modifyTitle(updateTitle);
+				pList.loadData();
+				pContent.clearTf();
+				btnAdd.setText("Ãß°¡");
+				JOptionPane.showMessageDialog(null, beforeTitle + "ÀÌ(°¡) " + updateTitle + "·Î º¯°æµÇ¾ú½À´Ï´Ù.");
+			} else {
+				JOptionPane.showMessageDialog(null, "Çü½ÄÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù.", "¿À·ù", 0);
+			}
+
+		} catch (NumberFormatException e1) {
+			JOptionPane.showMessageDialog(null, "°ø¶õ Á¸Àç", "¿À·ù", 0);
+		}
 	}
 
 	@Override

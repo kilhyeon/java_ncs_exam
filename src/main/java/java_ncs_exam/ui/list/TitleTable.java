@@ -43,7 +43,9 @@ public class TitleTable extends AbstractCustomTablePanel<Title> {
 	@Override
 	public Title getItem() {
 		int row = table.getSelectedRow();
-		int titleNo = (int) table.getValueAt(row, 0);
+
+		String stTitleNo = (String) table.getValueAt(row, 0);
+		int titleNo = Integer.parseInt(stTitleNo.indexOf("T") == -1 ? stTitleNo : stTitleNo.substring(1));
 
 		if (row == -1) {
 			throw new NotSelectedException();

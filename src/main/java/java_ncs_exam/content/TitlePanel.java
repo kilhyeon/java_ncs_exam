@@ -44,7 +44,6 @@ public class TitlePanel extends AbstractContentPanel<Title> {
 	public void setItem(Title item) {
 		tfNo.setText(String.valueOf(item.gettNo()));
 		tfName.setText(item.gettName());
-
 		tfNo.setEditable(false);
 	}
 
