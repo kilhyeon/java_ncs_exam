@@ -4,16 +4,7 @@ package java_ncs_exam.ui.exception;
 public class InvalidCheckException extends RuntimeException {
 
 	public InvalidCheckException() {
-		super("공백이 존재합니다.");
+		super("형식이 맞지 않습니다.");
 	}
 
-	public InvalidCheckException(String message) {
-		super(message);
-	}
-
-	public InvalidCheckException(Throwable cause) {
-		super("공백이 존재합니다.", cause);
-	}
-	
-	
 }

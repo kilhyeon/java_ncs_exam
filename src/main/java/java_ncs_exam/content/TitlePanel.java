@@ -1,6 +1,7 @@
 package java_ncs_exam.content;
 
 import java.awt.GridLayout;
+import java.util.regex.Pattern;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -8,6 +9,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
 import java_ncs_exam.dto.Title;
+import java_ncs_exam.ui.exception.EmptyTfException;
 import java_ncs_exam.ui.exception.InvalidCheckException;
 
 @SuppressWarnings("serial")
@@ -57,10 +59,22 @@ public class TitlePanel extends AbstractContentPanel<Title> {
 	@Override
 	public void validChek() {
 		if (tfNo.getText().contentEquals("") || tfName.getText().equals("")) {
-			throw new InvalidCheckException();
+			throw new EmptyTfException();
 		}
 	}
 
+	public void checktNo() {
+		if(!((Integer.parseInt(tfNo.getText()) > 0)) && (Integer.parseInt(tfNo.getText()) < 1000)) {
+			throw new InvalidCheckException();
+		}
+	}
+	
+	public void checkType() {
+		if(!(Pattern.matches("^[0~9]*$", tfNo.getText()) || Pattern.matches("^[°¡-ÆR]*$", tfName.getText()))) {
+			throw new InvalidCheckException();
+		}
+	}
+	
 	@Override
 	public void clearTf() {
 		tfNo.setText("");

@@ -4,11 +4,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import java_ncs_exam.control.TitleManagerUI;
+import java_ncs_exam.control.Management;
 
 @SuppressWarnings("serial")
 public class TitleMain extends JFrame {
-	private TitleManagerUI titleFrame;
+	private Management titleFrame;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -28,7 +28,7 @@ public class TitleMain extends JFrame {
 	}
 
 	public void createFrame() {
-		titleFrame = new TitleManagerUI();
+		titleFrame = new Management();
 		titleFrame.setTitle("직책 관리");
 		titleFrame.setVisible(true);
 	}
